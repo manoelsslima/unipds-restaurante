@@ -10,7 +10,7 @@ public class Main {
         List<ItemCardapio> itens = database.listaDeItensCardapio();
 
         // saber quantos itens de cada categoria realmente tem no cardápio
-        Map<ItemCardapio.CategoriaCardapio, Integer> itensPorCategoria = new HashMap<>();
+        Map<ItemCardapio.CategoriaCardapio, Integer> itensPorCategoria = new LinkedHashMap<>();
         for (ItemCardapio item : itens) {
             ItemCardapio.CategoriaCardapio categoria = item.categoria();
             if(!itensPorCategoria.containsKey(categoria)) {
@@ -25,6 +25,7 @@ public class Main {
         itens.stream()
                 .collect(Collectors.groupingBy(
                         ItemCardapio::categoria,
+                        LinkedHashMap::new,
                         Collectors.counting()
                 ))
                 .forEach((categoria, quantidade) -> System.out.println(categoria + " : " + quantidade));
