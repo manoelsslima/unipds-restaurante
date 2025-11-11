@@ -21,7 +21,7 @@ public class Main {
         }
         System.out.println("---------------------");
         itens.stream().map(ItemCardapio::categoria)
-                .collect(Collectors.toSet())
+                .collect(Collectors.toCollection(() -> new TreeSet<>(comparadorPorNome)))
                 .forEach(System.out::println);
     }
 }
