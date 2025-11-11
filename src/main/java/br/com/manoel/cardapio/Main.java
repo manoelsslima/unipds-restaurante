@@ -10,7 +10,7 @@ public class Main {
         List<ItemCardapio> itens = database.listaDeItensCardapio();
 
         // saber quais categorias existem no cardápio
-        Set<ItemCardapio.CategoriaCardapio> categorias = new HashSet<>();
+        Set<ItemCardapio.CategoriaCardapio> categorias = new LinkedHashSet<>();
         for (ItemCardapio item : itens) {
             ItemCardapio.CategoriaCardapio categoria = item.categoria();
             categorias.add(categoria);
